@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container text-center">
+    <div class="row d-flex align-items-center vh-100">
+        <div class="col-md-4 offset-md-4">
+            <form method="POST" class="card card-body">
+                <h1 class="display-5 text-center mb-4">Crear Estudiante</h1>
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <div class="mb-3">
+                    <input type="text" name="id" class="form-control" placeholder="Escribe un id" required maxlength="8">
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="name" class="form-control" placeholder="Escribe tus nombres" required>
+                </div>
+                <div class="mb-4">
+                    <input type="text" name="lastname" class="form-control" placeholder="Escribe tus apellidos" required>
+                </div>
+
+                <p class="text-danger">{{error}}</p>
+                <button class="btn btn-outline-success">
+                    Crear
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

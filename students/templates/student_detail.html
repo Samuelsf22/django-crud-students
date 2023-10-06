@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container text-center">
+    <div class="row d-flex align-items-center vh-100">
+        <div class="col-md-4 offset-md-4">
+            <form method="POST" class="card card-body">
+                <strong class="display-6">Estudiante:</strong>
+                <h1 class="display-6 text-secondary mb-4"> {{student}}</h1>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" value="{{student.id}}" readonly>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="name" class="form-control" placeholder="Escribe tus nombres" value="{{student.name}}" required>
+                </div>
+                <div class="mb-4">
+                    <input type="text" name="lastname" class="form-control" placeholder="Escribe tus apellidos" value="{{student.lastname}}" required>
+                </div>
+                <p class="text-danger">{{error}}</p>
+                <div class="d-flex justify-content-center">
+                    <form action="" method="POST">
+                        {% csrf_token %}    
+                        <button class="btn btn-outline-primary mx-2">
+                            Actualizar
+                        </button>
+                    </form>
+                    <form action="{% url 'students_delete' student.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-danger">
+                            Eliminar
+                        </button>
+                    </form>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

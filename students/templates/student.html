@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="display-3 text-center py-5 mt-5">Estudiantes</h1>
+            <ul class="list-group">
+                {% for student in students %}
+                <a class="list-group-item" href="{% url 'students_detail' student.id %}">
+                    <header class="d-flex justify-content-between">
+                        <h3>{{student.name}} {{student.lastname}}</h3>
+                    </header>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
